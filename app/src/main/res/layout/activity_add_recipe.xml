@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Nom de la recette -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nom de la recette"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextRecipeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez le nom de la recette" />
+
+        <!-- Nombre de personnes -->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Categorie"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextCategorie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Entrez la categorie" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre de personnes"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/editTextPersons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Entrez le nombre de personnes"
+            android:inputType="number" />
+
+        <!-- Ingrédients -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingrédients"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <LinearLayout
+            android:id="@+id/ingredientsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Exemple d'une ligne de champ pour les ingrédients -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editTextIngredientName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:hint="Nom de l'ingrédient"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/editTextIngredientQuantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Quantité"
+                    android:textAlignment="center"
+                    android:inputType="number" />
+
+                <EditText
+                    android:id="@+id/editTextIngredientUnit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Unité"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonAddIngredient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajouter un ingrédient"
+            android:layout_marginTop="8dp" />
+
+        <!-- Instructions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instructions"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/editTextInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Décrivez les instructions"
+            android:minHeight="100dp"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+
+        <!-- Bouton Ajouter -->
+        <Button
+            android:id="@+id/buttonSaveRecipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajouter la recette"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>
