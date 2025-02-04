@@ -5,12 +5,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -67,17 +65,15 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.RecetteH
     }
 
     public class RecetteHolder extends RecyclerView.ViewHolder {
-        TextView nomRecetteTextView, personnesTextView, instructionsTextView, idTextView;
+        TextView nomRecetteTextView, personnesTextView, instructionsTextView;
         RecyclerView ingredientsRecyclerview;
-        ImageView imageRecetteView;
 
         public RecetteHolder(@NonNull View itemView) {
             super(itemView);
-            nomRecetteTextView = (TextView) itemView.findViewById(R.id.nom_recette);
-            personnesTextView = (TextView) itemView.findViewById(R.id.personnes);
-            instructionsTextView = (TextView) itemView.findViewById(R.id.instructions);
-            ingredientsRecyclerview = (RecyclerView) itemView.findViewById(R.id.ingredientsRecyclerview);
-            //idTextView = (TextView) itemView.findViewById(R.id.textView);
+            nomRecetteTextView = itemView.findViewById(R.id.nom_recette);
+            personnesTextView = itemView.findViewById(R.id.personnes);
+            instructionsTextView = itemView.findViewById(R.id.instructions);
+            ingredientsRecyclerview = itemView.findViewById(R.id.ingredientsRecyclerview);
         }
 
         void display(RecetteEntity recette) {
@@ -95,6 +91,5 @@ public class RecetteAdapter extends RecyclerView.Adapter<RecetteAdapter.RecetteH
                 Log.e("RecetteAdapter", "Contexte n'est pas une instance de LifecycleOwner. Impossible d'observer LiveData.");
             }
         }
-
     }
 }
