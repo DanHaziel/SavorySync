@@ -19,9 +19,9 @@ public class OptionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_options);
+        setContentView(R.layout.activity_shopping_list);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewOptions);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewDates);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         AppDatabase db = AppDatabase.getDatabaseFromJava(this);
