@@ -22,8 +22,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter à la liste"
-        android:layout_gravity="end|bottom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_modify_recipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Modifier recette"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
