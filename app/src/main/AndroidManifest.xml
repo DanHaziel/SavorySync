@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SavorySync"
         tools:targetApi="31">
         <activity
+            android:name=".view.ModifyRecipeActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ListeDeCourseActivity"
             android:exported="false" />
         <activity
