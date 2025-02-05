@@ -116,5 +116,13 @@ public class RecipeDetailActivity extends AppCompatActivity {
                 //startActivity(intent);
             }
         });
+
+        Button modifyRecipeButton = findViewById(R.id.btn_modify_recipe);
+        modifyRecipeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(RecipeDetailActivity.this, ModifyRecipeActivity.class);
+            intent.putExtra("RECIPE_ID", recipeId);
+            startActivity(intent);
+        });
+
     }
 }
