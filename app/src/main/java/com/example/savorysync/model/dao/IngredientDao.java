@@ -18,7 +18,7 @@ public interface IngredientDao {
     void insertIngredient(IngredientEntity ingredient);
 
     @Update
-    void update(IngredientEntity ingredient);
+    void updateIngredient(IngredientEntity ingredient);
 
     @Delete
     void delete(IngredientEntity ingredient);
