@@ -63,7 +63,7 @@ Le dossier `app/build` est exclu du projet pour éviter de transmettre des fichi
 
 ## Auteur
 
-- **NGATCHUISSI MBOUCHE Dan** - Développeur Android
+- **NGATCHUISSI MBOUCHE Dan** - [@DanHaziel](https://github.com/DanHaziel) - Développeur Android
 
 ---
 
