@@ -29,7 +29,7 @@ public class IngredientRepository {
 
     // Update an existing ingredient
     public void updateIngredient(IngredientEntity ingredient) {
-        executorService.execute(() -> ingredientDao.update(ingredient));
+        executorService.execute(() -> ingredientDao.updateIngredient(ingredient));
     }
 
     // Delete a specific ingredient
