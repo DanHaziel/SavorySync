@@ -18,7 +18,7 @@ public interface RecetteDao {
     long insertRecette(RecetteEntity recette);
 
     @Update
-    void update(RecetteEntity recette);
+    void updateRecipe(RecetteEntity recette);
 
     @Delete
     void delete(RecetteEntity recette);
@@ -49,4 +49,7 @@ public interface RecetteDao {
 
     @Query("SELECT COUNT(*) FROM table_recette")
     int getRowCount();
+
+    @Query("SELECT * FROM table_recette WHERE id = :id")
+    RecetteEntity getRecipeByIdSync(int id); // Pour exécution en arrière-plan
 }
