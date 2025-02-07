@@ -137,8 +137,9 @@ public class ModifyRecipeActivity extends AppCompatActivity {
         String newNom = editNom.getText().toString().trim();
         String newPersonnesStr = editPersonnes.getText().toString().trim();
         String newInstructions = editInstructions.getText().toString().trim();
+        String newCategorie = editCategorie.getText().toString().trim();
 
-        if (newNom.isEmpty() || newPersonnesStr.isEmpty() || newInstructions.isEmpty()) {
+        if (newNom.isEmpty() || newPersonnesStr.isEmpty() || newInstructions.isEmpty() || newCategorie.isEmpty()) {
             Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -149,6 +150,7 @@ public class ModifyRecipeActivity extends AppCompatActivity {
             RecetteEntity recette = recetteDao.getRecipeByIdSync(recipeId);
             if (recette != null) {
                 recette.setTitre(newNom);
+                recette.setCategorie(newCategorie);
                 recette.setPersonnes(newPersonnes);
                 recette.setInstructions(newInstructions);
                 recetteDao.updateRecipe(recette);
