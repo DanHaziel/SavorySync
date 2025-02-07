@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_modify_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_shopping_list" />
+        tools:listitem="@layout/item_modify_shopping_list" />
 
     <Button
         android:id="@+id/btn_modify_list"
