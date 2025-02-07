@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,5 +62,14 @@ public class ListeDeCourseActivity extends AppCompatActivity {
         // Observez les données de la liste de courses
         LiveData<List<IngredientDetails>> shoppingList = listesDeCoursesDao.getGroupedIngredientsByDateAndUser(LocalDate.parse(dateCreation), loggedInUser.getId());
         shoppingList.observe(this, adapter::submitList);
+
+        Button modifyRecipeButton = findViewById(R.id.btn_modify_list);
+        modifyRecipeButton.setOnClickListener(v -> {
+            Intent intent1 = new Intent(ListeDeCourseActivity.this, ModifyListActivity.class);
+            //intent.putExtra("RECIPE_ID", recipeId);
+            intent1.putExtra("DATE_CREATION", dateCreation);
+            Log.d("Date",  dateCreation);
+            startActivity(intent1);
+        });
     }
 }
