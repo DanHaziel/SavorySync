@@ -49,7 +49,7 @@ public interface ListeDeCoursesDao {
     @Query("DELETE FROM table_liste_de_courses WHERE id = :id")
     void deleteShoppingListById(int id);
 
-    @Query("SELECT i.nom, SUM(l.quantite) AS totalQuantite, i.unite " +
+    @Query("SELECT i.id, i.nom, SUM(l.quantite) AS totalQuantite, i.unite " +
             "FROM table_liste_de_courses l " +
             "JOIN table_ingredient i ON l.ingredientId = i.id " +
             "WHERE l.dateCreation = :date " +
@@ -57,7 +57,7 @@ public interface ListeDeCoursesDao {
             "ORDER BY i.nom ASC")
     LiveData<List<IngredientDetails>> getIngredientsDetailsByDate(LocalDate date);
 
-    @Query("SELECT i.nom, SUM(l.quantite) AS totalQuantite, i.unite " +
+    @Query("SELECT i.id, i.nom, SUM(l.quantite) AS totalQuantite, i.unite " +
             "FROM table_liste_de_courses l " +
             "JOIN table_ingredient i ON l.ingredientId = i.id " +
             "WHERE l.dateCreation = :date AND l.userId = :userId " +
