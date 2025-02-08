@@ -76,4 +76,8 @@ public interface ListeDeCoursesDao {
 
     @Query("SELECT COUNT(*) FROM table_liste_de_courses")
     int getRowCount();
+
+    @Query("UPDATE table_liste_de_courses SET quantite = :newQuantity WHERE ingredientId = :ingredientId AND dateCreation = :date")
+    void updateIngredientDetails(int ingredientId, int newQuantity, LocalDate date);
+
 }
