@@ -17,6 +17,15 @@
         tools:listitem="@layout/item_modify_shopping_list" />
 
     <Button
+        android:id="@+id/btn_add_ingredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ajouter un ingrédient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <Button
         android:id="@+id/btn_save_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
