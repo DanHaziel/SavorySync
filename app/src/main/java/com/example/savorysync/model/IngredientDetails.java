@@ -1,18 +1,28 @@
 package com.example.savorysync.model;
 
 public class IngredientDetails {
+    private int id;
     private String nom;
     private int totalQuantite;
     private String unite;
 
     // Constructor
-    public IngredientDetails(String nom, int totalQuantite, String unite) {
+    public IngredientDetails(int id, String nom, int totalQuantite, String unite) {
+        this.id = id;
         this.nom = nom;
         this.totalQuantite = totalQuantite;
         this.unite = unite;
     }
 
     // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNom() {
         return nom;
     }
