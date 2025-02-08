@@ -31,6 +31,9 @@ public class ModifyListActivity extends AppCompatActivity {
 
     private ListeDeCoursesDao listesDeCoursesDao;
     private IngredientDao ingredientDao;
+    private Button btnSave;
+    ModifyListAdapter adapter;
+    String dateCreation;
 
     @SuppressLint("NewApi")
     @Override
@@ -38,10 +41,12 @@ public class ModifyListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_list);
 
+        btnSave = findViewById(R.id.btn_save_list);
+
         //int dateCreation = getIntent().getIntExtra("DATE_CREATION", -1);
         Intent intent = getIntent();
         // Récupérer la valeur associée à la clé "DATE_CREATION"
-        String dateCreation = intent.getStringExtra("DATE_CREATION");
+        dateCreation = intent.getStringExtra("DATE_CREATION");
         if (dateCreation != null) {
             // Utiliser la valeur
             Toast.makeText(this, "Date sélectionnée : " + dateCreation, Toast.LENGTH_SHORT).show();
@@ -57,7 +62,7 @@ public class ModifyListActivity extends AppCompatActivity {
         LoginEntity loggedInUser = db.loginDao().getLoggedInUser(); // Récupérer l'utilisateur connecté
         //Log.d("Valeurs", "Valeurs : " + listesDeCoursesDao.getIngredientsDetailsByDate(LocalDate.parse(dateCreation)));
         // Configurez l'adapter
-        ListeDeCoursesAdapter adapter = new ListeDeCoursesAdapter(this, R.layout.item_modify_shopping_list, new ArrayList());
+        adapter = new ModifyListAdapter(this, R.layout.item_modify_shopping_list, new ArrayList());
         recyclerView.setAdapter(adapter);
 
         // Observez les données de la liste de courses
@@ -65,11 +70,33 @@ public class ModifyListActivity extends AppCompatActivity {
         LiveData<List<IngredientDetails>> shoppingList = listesDeCoursesDao.getGroupedIngredientsByDateAndUser(LocalDate.parse(dateCreation), loggedInUser.getId());
         shoppingList.observe(this, adapter::submitList);
 
-        Button modifyRecipeButton = findViewById(R.id.btn_modify_list);
-        modifyRecipeButton.setOnClickListener(v -> {
-            Intent intent1 = new Intent(ModifyListActivity.this, ModifyRecipeActivity.class);
-            //intent.putExtra("RECIPE_ID", recipeId);
-            startActivity(intent1);
-        });
+        btnSave.setOnClickListener(v -> saveChanges());
     }
+
+    @SuppressLint("NewApi")
+    private void saveChanges() {
+        if (adapter == null || adapter.getItemCount() == 0) {
+            Toast.makeText(this, "Aucune modification à enregistrer.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        List<IngredientDetails> modifiedList = adapter.getUpdatedList();
+
+        new Thread(() -> {
+            for (IngredientDetails ingredient : modifiedList) {
+                listesDeCoursesDao.updateIngredientDetails(
+                        ingredient.getId(),
+                        ingredient.getTotalQuantite(),
+                        LocalDate.parse(dateCreation)
+                );
+                Log.e("ModifyListActivity", "Ingredient : " + ingredient.getTotalQuantite() + " ; id : " + ingredient.getId());
+            }
+
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Liste mise à jour avec succès !", Toast.LENGTH_SHORT).show();
+                finish();
+            });
+        }).start();
+    }
+
 }
