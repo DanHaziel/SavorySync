@@ -80,4 +80,7 @@ public interface ListeDeCoursesDao {
     @Query("UPDATE table_liste_de_courses SET quantite = :newQuantity WHERE ingredientId = :ingredientId AND dateCreation = :date")
     void updateIngredientDetails(int ingredientId, int newQuantity, LocalDate date);
 
+    @Query("DELETE FROM table_liste_de_courses WHERE dateCreation = :date AND userId = :userId")
+    int deleteShoppingListByDateAndUser(LocalDate date, int userId);
+
 }
